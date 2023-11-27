@@ -2,6 +2,9 @@ const httpProxy = require('express-http-proxy');
 const express = require('express');
 const app = express();
 const logger = require('morgan');
+const cors = require('cors')
+
+app.use(cors())
 
 app.use(logger('dev'));
 
