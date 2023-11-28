@@ -1,8 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
+const cors = require('cors');
+
+
+
+
 
 const app = express();
+
+app.use(cors()); // Adicione esta linha para habilitar o CORS
+
 app.use(bodyParser.json());
 
 // Conexão com o banco de dados SQLite3
