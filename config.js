@@ -17,23 +17,23 @@ app.get('/hello', (req, res) => {
 
 
 // Rota para lidar com requisições PATCH
-app.patch("/Config/atualizar-temperatura", (req, res) => {
+app.patch("/Config/atualizar-umidade", (req, res) => {
   try {
     // Lê o arquivo JSON de configuração
     const configFile = "config.json";
     const configData = fs.readFileSync(configFile, "utf8");
     const config = JSON.parse(configData);
 
-    // Atualiza o parâmetro de temperatura com base nos dados recebidos na requisição PATCH
-    if (req.body.temperatura) {
-      config.temperatura = req.body.temperatura;
+    // Atualiza o parâmetro de umidade com base nos dados recebidos na requisição PATCH
+    if (req.body.umidade) {
+      config.umidade = req.body.umidade;
     }
 
     // Escreve as alterações de volta no arquivo JSON
     fs.writeFileSync(configFile, JSON.stringify(config, null, 2));
 
     // Retorna a resposta de sucesso
-    res.status(200).json({ mensagem: "Parâmetro de temperatura atualizado com sucesso." });
+    res.status(200).json({ mensagem: "Parâmetro de umidade atualizado com sucesso." });
   } catch (error) {
     console.error("Erro ao processar requisição PATCH:", error);
     res.status(500).json({ erro: "Erro interno do servidor." });
@@ -41,16 +41,16 @@ app.patch("/Config/atualizar-temperatura", (req, res) => {
 });
 
 
-// Rota para lidar com requisições GET da temperatura
-app.get("/Config/ler-temperatura", (req, res) => {
+// Rota para lidar com requisições GET da umidade
+app.get("/Config/ler-umidade", (req, res) => {
     try {
       // Lê o arquivo JSON de configuração
       const configFile = "config.json";
       const configData = fs.readFileSync(configFile, "utf8");
       const config = JSON.parse(configData);
   
-      // Retorna a temperatura no corpo da resposta
-      res.status(200).json({ temperatura: config.temperatura });
+      // Retorna a umidade no corpo da resposta
+      res.status(200).json({ umidade: config.umidade });
     } catch (error) {
       console.error("Erro ao processar requisição GET:", error);
       res.status(500).json({ erro: "Erro interno do servidor." });
