@@ -23,7 +23,7 @@ app.patch("/Config/atualizar-umidade", (req, res) => {
     const configData = fs.readFileSync(configFile, "utf8");
     const config = JSON.parse(configData);
 
-    // Atualiza o parâmetro de umidade com base nos dados recebidos na requisição PATCH
+    // Atualiza o parâmetro de umidade com base nos dados recebidos no requisição PATCH
     if (req.body.umidade) {
       config.umidade = req.body.umidade;
     }
